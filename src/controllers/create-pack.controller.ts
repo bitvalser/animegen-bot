@@ -86,7 +86,7 @@ export class CreatePackController extends ControllerBase {
         }
         return !data.required;
       });
-      if (isValid) {
+      if (isValid && formattedOptions.rounds) {
         const haveMusic =
           formattedOptions.rounds.includes(PackRound.Endings) || formattedOptions.rounds.includes(PackRound.Openings);
         if (haveMusic && formattedOptions.titleCounts > 100) {
