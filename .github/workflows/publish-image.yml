@@ -49,4 +49,4 @@ jobs:
           script: |
             docker pull bitvalser/animegen-bot
             docker ps -a -q --filter="name=bitvalser/animegen-bot"
-            docker run -d --restart always --network="host" --env-file /home/animegen-bot/.env bitvalser/animegen-bot  
+            docker run -d --restart always --memory="3g" --network="host" --env-file /home/animegen-bot/.env bitvalser/animegen-bot  
