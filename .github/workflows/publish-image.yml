@@ -48,6 +48,6 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
+            docker rm -f $(docker ps -a --filter ancestor="bitvalser/animegen-bot" --format={{.ID}})
             docker pull bitvalser/animegen-bot
-            docker ps -a -q --filter="name=bitvalser/animegen-bot"
             docker run -d --restart always --memory="3g" --network="host" --env-file /home/animegen-bot/.env bitvalser/animegen-bot  

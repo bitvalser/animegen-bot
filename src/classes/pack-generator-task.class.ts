@@ -136,6 +136,7 @@ export class PackGeneratorTask {
       })
       .catch((error) => {
         this.status = 'Ошибка!';
+        console.error(error);
         this.error = error?.message || (error ? error.toString() : 'Что-то пошло не так при генерации пака :(');
         this.error = this.error.substring(0, 400);
       })
