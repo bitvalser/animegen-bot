@@ -12,7 +12,7 @@ export type CreateArguments = Record<keyof typeof CREATE_ARGUMENTS_DATA, any> & 
   commands: ['create'],
 })
 export class CreatePackController extends ControllerBase {
-  public static MAX_TASKS = 3;
+  public static MAX_TASKS = 5;
   private generatorTasksService: GeneratorTasksService = GeneratorTasksService.getInstance();
 
   private showQueue(): Promise<any> {
@@ -46,9 +46,7 @@ export class CreatePackController extends ControllerBase {
       ...(formattedOptions.packName ? { packName: formattedOptions.packName } : {}),
       rounds: formattedOptions.rounds || [
         PackRound.Characters,
-        PackRound.Endings,
         PackRound.Screenshots,
-        PackRound.Openings,
       ],
       titleCounts: formattedOptions.titleCounts || 50,
       showScore: false,

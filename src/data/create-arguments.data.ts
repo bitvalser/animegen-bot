@@ -23,12 +23,14 @@ export const CREATE_ARGUMENTS_DATA: {
   kinds: {
     mapTo: 'animeKinds',
     mapValue: (value: string) => value.split(','),
-    validator: (value: string) => value.split(',').every((item) => Object.values(AnimeKind).includes(item as AnimeKind)),
+    validator: (value: string) =>
+      value.split(',').every((item) => Object.values(AnimeKind).includes(item as AnimeKind)),
   },
   roles: {
     mapTo: 'charactersRoles',
     mapValue: (value: string) => value.split(','),
-    validator: (value: string) => value.split(',').every((item) => Object.values(AnimeCharacterRole).includes(item as AnimeCharacterRole)),
+    validator: (value: string) =>
+      value.split(',').every((item) => Object.values(AnimeCharacterRole).includes(item as AnimeCharacterRole)),
   },
   compression: {
     mapTo: 'imageCompression',
@@ -39,7 +41,13 @@ export const CREATE_ARGUMENTS_DATA: {
     mapTo: 'rounds',
     mapValue: (value: string) => value.split(','),
     validator: (value: string) =>
-      value.split(',').every((item) => Object.values(PackRound).includes(item as PackRound)),
+      value
+        .split(',')
+        .every(
+          (item) =>
+            Object.values(PackRound).includes(item as PackRound) &&
+            ![PackRound.Openings, PackRound.Endings].includes(item as PackRound)
+        ),
   },
   // packName: {
   //   mapValue: (value: string) => value.substring(0, 100),
