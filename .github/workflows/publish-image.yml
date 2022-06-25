@@ -30,7 +30,7 @@ jobs:
         with:
           node-version: 16
       - run: yarn install
-      - run: echo "{{ secrets.GOOGLE_DRIVE_CREDENTIALS }}" > credentials.json
+      - run: echo {{ secrets.GOOGLE_DRIVE_CREDENTIALS }} | base64 --decode > credentials.json
       - run: yarn run build
       
       - name: Build and push Docker image
