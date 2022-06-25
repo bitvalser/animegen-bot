@@ -9,10 +9,10 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-"@bitvalser/animegen@^1.0.47":
-  version "1.0.47"
-  resolved "https://registry.yarnpkg.com/@bitvalser/animegen/-/animegen-1.0.47.tgz#6cfc37d8187ee6ff43abfca3686f72e283ab33ba"
-  integrity sha512-grVSm7CFq68Klp3aNVmbEV2wEqUzD9Z03Y2bz+jcA5gcAU08d34i0jApFzc4D3Yn7wneqCqYb9bnBojWkdnW8A==
+"@bitvalser/animegen@^1.0.48":
+  version "1.0.48"
+  resolved "https://registry.yarnpkg.com/@bitvalser/animegen/-/animegen-1.0.48.tgz#1dce0e8a3bb4aa12e4ca62a4146483c145b7815d"
+  integrity sha512-OGgEjvKBNhtaNm79qSsOU5T9K5/PAJh1mFgZU7ruNKSaFUZArvZ+quW2c9C6nfOwYDFjXk8MjMD48bTkJObeDA==
   dependencies:
     "@googleapis/drive" "^3.0.0"
     archiver "^5.3.1"
