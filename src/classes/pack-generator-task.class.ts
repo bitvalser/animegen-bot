@@ -87,14 +87,17 @@ export class PackGeneratorTask {
     return new Discord.MessageEmbed({
       title: 'Генерация пака',
       description: this.getDescription(),
-      fields: [this.getStatusRow()],
-      ...(this.link
-        ? {
-            footer: {
-              text: `[Скачать пакет](${this.link})`,
-            },
-          }
-        : {}),
+      fields: [
+        this.getStatusRow(),
+        ...(this.link
+          ? [
+              {
+                name: 'Пакет',
+                value: `[Скачать пакет](${this.link})`,
+              },
+            ]
+          : []),
+      ],
     });
   }
 
