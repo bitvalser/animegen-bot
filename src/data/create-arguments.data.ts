@@ -46,7 +46,7 @@ export const CREATE_ARGUMENTS_DATA: {
         .every(
           (item) =>
             Object.values(PackRound).includes(item as PackRound) &&
-            ![PackRound.Openings, PackRound.Endings].includes(item as PackRound)
+            ![PackRound.Openings, PackRound.Endings, PackRound.Coubs].includes(item as PackRound)
         ),
   },
   // packName: {
