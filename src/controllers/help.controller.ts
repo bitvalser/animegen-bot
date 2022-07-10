@@ -53,7 +53,7 @@ export class HelpController extends ControllerBase {
         },
         {
           name: 'random',
-          value: 'Смешивает выбранные раунды',
+          value: 'Необязательное поле. Смешивает выбранные раунды',
         },
         {
           name: 'animeProvider',
