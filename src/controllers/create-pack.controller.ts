@@ -60,7 +60,7 @@ export class CreatePackController extends ControllerBase {
           .split('=')
           .filter((item) => Boolean(item))
           .map((item) => item.trim());
-        return arg && value
+        return arg
           ? {
               ...acc,
               [arg]: value || '',
