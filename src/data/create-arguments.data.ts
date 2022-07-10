@@ -50,7 +50,7 @@ export const CREATE_ARGUMENTS_DATA: {
         ),
   },
   random: {
-    validator: (value) => (value as never as boolean) ?? false,
+    validator: () => true,
     mapValue: () => true,
   },
   noRepeats: {
