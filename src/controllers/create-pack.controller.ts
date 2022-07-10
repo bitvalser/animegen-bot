@@ -63,7 +63,7 @@ export class CreatePackController extends ControllerBase {
         return arg
           ? {
               ...acc,
-              [arg]: value || true,
+              [arg]: value || 'true',
             }
           : acc;
       }, {});
