@@ -3,8 +3,11 @@ import {
   AnimeProviderBase,
   DriveUploaderBase,
   GeneratorOptions,
+  GeneratorRoundStrategy,
   GoogleDriveUploader,
   MusicDownloaderProviderBase,
+  RandomGeneratorStrategy,
+  RoundsGeneratorStrategy,
   ShikimoriProvider,
   YoutubeMusicDownloader,
 } from '@bitvalser/animegen';
@@ -29,19 +32,22 @@ export class PackGeneratorTask {
   private updateInterval: NodeJS.Timer = null;
   private animeProvider: AnimeProviders;
   private musicProvider: MusicProviders;
+  private randomStrategy: boolean;
 
   public constructor(
     name: string,
     options: Partial<GeneratorOptions>,
     author: string,
     animeProvider: AnimeProviders = null,
-    musicProvider: MusicProviders = null
+    musicProvider: MusicProviders = null,
+    randomStrategy: boolean = false
   ) {
     this.options = options;
     this.author = author;
     this.name = name;
     this.animeProvider = animeProvider;
     this.musicProvider = musicProvider;
+    this.randomStrategy = randomStrategy;
   }
 
   public getAuthor(): string {
@@ -69,6 +75,13 @@ export class PackGeneratorTask {
       default:
         return new YoutubeMusicDownloader();
     }
+  }
+
+  private getBuildStrategy(): GeneratorRoundStrategy {
+    if (this.randomStrategy) {
+      return new RandomGeneratorStrategy();
+    }
+    return new RoundsGeneratorStrategy();
   }
 
   private getUploader(): DriveUploaderBase {
@@ -119,7 +132,7 @@ export class PackGeneratorTask {
       .then((newMessage) => {
         this.statusMessage = newMessage;
         this.updateInterval = setInterval(() => this.update(), PackGeneratorTask.UPDATE_INTERVAL);
-        const generator = new AnimeGenerator(this.getAnimeProvider(), this.getMusicProvider());
+        const generator = new AnimeGenerator(this.getAnimeProvider(), this.getMusicProvider(), this.getBuildStrategy());
         return generator.createPack(this.options, (progress, status) => {
           this.progress = Math.floor(progress);
           this.status = status;

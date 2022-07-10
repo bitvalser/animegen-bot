@@ -44,12 +44,10 @@ export class CreatePackController extends ControllerBase {
       charactersRoles: formattedOptions.charactersRoles || [AnimeCharacterRole.Main, AnimeCharacterRole.Supporting],
       imageCompression: formattedOptions.imageCompression || 0.7,
       ...(formattedOptions.packName ? { packName: formattedOptions.packName } : {}),
-      rounds: formattedOptions.rounds || [
-        PackRound.Characters,
-        PackRound.Screenshots,
-      ],
+      rounds: formattedOptions.rounds || [PackRound.Characters, PackRound.Screenshots],
       titleCounts: formattedOptions.titleCounts || 50,
-      showScore: false,
+      showScore: formattedOptions.showScore ?? true,
+      noRepeats: formattedOptions.noRepeats ?? false,
     };
   }
 
@@ -102,7 +100,8 @@ export class CreatePackController extends ControllerBase {
               this.getDefaultOptions(formattedOptions),
               this.message.author.username,
               formattedOptions.animeProvider,
-              formattedOptions.musicProvider
+              formattedOptions.musicProvider,
+              formattedOptions.random
             );
             this.generatorTasksService.tasks.push(task);
             task.start(this.message).finally(() => {

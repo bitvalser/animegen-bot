@@ -49,6 +49,14 @@ export const CREATE_ARGUMENTS_DATA: {
             ![PackRound.Openings, PackRound.Endings, PackRound.Coubs].includes(item as PackRound)
         ),
   },
+  random: {
+    validator: (value) => (value as never as boolean) ?? false,
+    mapValue: () => true,
+  },
+  noRepeats: {
+    validator: () => true,
+    mapValue: () => true,
+  },
   // packName: {
   //   mapValue: (value: string) => value.substring(0, 100),
   //   validator: (value) => value.trim().length > 2,
